@@ -1,8 +1,10 @@
 from flask import Flask
 import json
 from flask_restful import Resource, Api
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 app.json.ensure_ascii = False
 
@@ -17,7 +19,6 @@ class Data(Resource):
 
 
 api.add_resource(Data, "/data")
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
